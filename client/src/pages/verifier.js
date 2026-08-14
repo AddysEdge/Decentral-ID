@@ -1,31 +1,26 @@
 import { useContext, useEffect } from "react";
-import { TransactionContext } from "../context/TransactionContext";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Nav from "../components/nav";
+import { TransactionContext } from "../context/TransactionContext";
 
 const Verifier = () => {
-	const { currentAccount,isAdmin, verifierVReqList, loadVerifierList } = useContext(TransactionContext);
+	const { currentAccount, isAdmin, verifierVReqList, loadVerifierList } = useContext(TransactionContext);
 	const navigate = useNavigate();
 
-	useEffect(() =>{
+	useEffect(() => {
 		loadVerifierList();
 	}, []);
 
-  useEffect(() => {
-	console.log("SS")
-    if (currentAccount != "") {
-		console.log(currentAccount)
-		if(isAdmin)
-          navigate('/admin')
-        else
-          navigate('/home')
-      };
-  }, [currentAccount]);
+	useEffect(() => {
+		if (currentAccount !== "" && isAdmin !== undefined && !isAdmin) {
+			navigate('/home')
+		}
+	}, [currentAccount, isAdmin]);
 
-    return (
+	return (
 		<div className='items-center justify-center w-full h-full overflow-x-hidden'>
-				<Nav />
-				<div className='flex flex-col items-center w-full h-full'>
+			<Nav />
+			<div className='flex flex-col items-center w-full h-full'>
 
 				<h1 className="pb-10 text-4xl">Verification Panel</h1>
 				<table className='w-2/4 rounded-lg border-2 border-gray'>
@@ -81,9 +76,9 @@ const Verifier = () => {
 						))}
 					</tbody>
 				</table>
-				</div>
 			</div>
-		)
+		</div>
+	)
 }
 
 export default Verifier
