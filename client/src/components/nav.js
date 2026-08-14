@@ -20,25 +20,25 @@ export default function Nav() {
 		: ''
 
 	return (
-			<div className='flex justify-between w-full p-10'>
-				<Link to='/home' className='text-3xl font-bold'>DecentralID</Link>
-				<div className='flex items-center space-x-5'>
+		<div className='flex flex-wrap items-center justify-between w-full gap-4 p-6 sm:p-10'>
+			<Link to='/home' className='text-3xl font-bold'>DecentralID</Link>
+			<div className='flex items-center gap-4'>
 				{!isAdminSection && (
-				<div className='flex space-x-5'>
-					<Link to='/home/addDocument' className={linkClass('/home/addDocument')}>
-						Add Verification Request
-					</Link>
-					<Link to='/home' className={linkClass('/home')}>
-						My Requests Status
-					</Link>
-				</div>)
-				}
+					<div className='flex flex-wrap gap-3'>
+						<Link to='/home/addDocument' className={linkClass('/home/addDocument')}>
+							Add Verification Request
+						</Link>
+						<Link to='/home' className={linkClass('/home')}>
+							My Requests Status
+						</Link>
+					</div>
+				)}
 				{shortAddress && (
 					<span className='px-3 py-2 text-sm font-medium bg-gray-100 rounded-md'>
 						{shortAddress}
 					</span>
 				)}
-				</div>
 			</div>
+		</div>
 	)
 }
