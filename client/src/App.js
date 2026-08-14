@@ -1,5 +1,4 @@
 import './App.css'
-import Nav from './components/nav'
 import Login from './pages/login'
 import Home from './pages/home'
 import AddDocument from './pages/addDocument'
