@@ -176,6 +176,8 @@ export const TransactionsProvider = ({ children }) => {
   ) => {
     try {
       if (ethereum) {
+        setIsLoading(true);
+        setErrorMessage("");
         const transactionsContract = createEthereumContract();
 
         await transactionsContract.giveAccess(
@@ -190,10 +192,13 @@ export const TransactionsProvider = ({ children }) => {
           isCollegeStudent
         );
       } else {
-        console.log("Ethereum is not present");
+        setErrorMessage("Please install MetaMask.");
       }
     } catch (error) {
       console.log(error);
+      setErrorMessage(error?.message || "Failed to grant access.");
+    } finally {
+      setIsLoading(false);
     }
   }
 
