@@ -24,6 +24,7 @@ export const TransactionsProvider = ({ children }) => {
   const [userVReqList,setUserVReqList] = useState([]);
   const [verifierVReqList,setVerifierVReqList] = useState([]);
   const [isAdmin,setIsAdmin] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const submitDocument = async (
     verifier,
