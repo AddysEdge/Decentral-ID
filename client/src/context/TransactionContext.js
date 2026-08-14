@@ -209,6 +209,8 @@ export const TransactionsProvider = ({ children }) => {
   ) => {
     try {
       if (ethereum) {
+        setIsLoading(true);
+        setErrorMessage("");
         const transactionsContract = createEthereumContract();
 
         await transactionsContract.verifyReq(
@@ -217,10 +219,13 @@ export const TransactionsProvider = ({ children }) => {
           decision
         );
       } else {
-        console.log("Ethereum is not present");
+        setErrorMessage("Please install MetaMask.");
       }
     } catch (error) {
       console.log(error);
+      setErrorMessage(error?.message || "Failed to submit verification decision.");
+    } finally {
+      setIsLoading(false);
     }
   }
 
