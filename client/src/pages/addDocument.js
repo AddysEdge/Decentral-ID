@@ -24,7 +24,7 @@ const AddDocument = () => {
 
 	const [fields, setFields] = useState([])
 	const [selectedField, setSelectedField] = useState()
-	const { submitDocument, getVerifierAddress } = useContext(TransactionContext)
+	const { submitDocument, getVerifierAddress, isLoading, errorMessage } = useContext(TransactionContext)
 
 	const authorization =
 		'Basic ' + window.btoa(projectId + ':' + projectSecretKey)
@@ -164,8 +164,6 @@ const handleSubmit = async (e) => {
 		)
 	}
 
-	console.log(formData)
-
 	return (
 		<div className='w-full h-full overflow-x-hidden'>
 			<Nav />
@@ -289,24 +287,24 @@ const handleSubmit = async (e) => {
 											Field(selectedField, 'college', fieldKey),
 										])
 								}}
-								className='h-[44px] ml-6 w-1/2 flex justify-center items-center bg-blue-300 rounded'
+								className='h-[44px] ml-6 w-1/2 flex justify-center items-center bg-blue-300 rounded hover:bg-blue-400 transition-colors'
 							>
 								Add Field +
 							</button>
 						</div>
 					</div>
 
-					{uploadError && (
-						<p className='w-[40%] my-3 text-red-600'>{uploadError}</p>
+					{(uploadError || errorMessage) && (
+						<p className='w-[40%] my-3 text-red-600'>{uploadError || errorMessage}</p>
 					)}
 
 					<div className='w-[40%] my-3 flex'>
 						<button
 							type='submit'
-							disabled={isUploading}
-							className='w-full h-[44px] bg-blue-300 flex justify-center items-center rounded font-semibold disabled:opacity-60 disabled:cursor-not-allowed'
+							disabled={isUploading || isLoading}
+							className='w-full h-[44px] bg-blue-300 flex justify-center items-center rounded font-semibold hover:bg-blue-400 transition-colors disabled:opacity-60 disabled:cursor-not-allowed'
 						>
-							{isUploading ? 'Uploading...' : 'Add Document'}
+							{isUploading ? 'Uploading...' : isLoading ? 'Submitting...' : 'Add Document'}
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								width='25'
