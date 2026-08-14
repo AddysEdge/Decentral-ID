@@ -13,7 +13,7 @@ const Login = () => {
   const { connectWallet, currentAccount, getVerifierName } = useContext(TransactionContext);
   const navigate = useNavigate();
   useEffect(() => {
-    if (currentAccount != "") {
+    if (currentAccount !== "") {
     getVerifierName(currentAccount.toLowerCase()).then((name) => {
         if (name !== "")
           navigate('/admin')
