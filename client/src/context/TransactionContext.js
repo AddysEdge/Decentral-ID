@@ -1,8 +1,8 @@
-import React, { useDebugValue, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
 import { contractABI, contractAddress } from "../utils/constants";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export const TransactionContext = React.createContext();
 
