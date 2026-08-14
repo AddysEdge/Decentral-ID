@@ -105,7 +105,7 @@ const handleSubmit = async (e) => {
 				<div className='w-[40%] my-3'>
 					<label>{name}</label>
 					<input
-						class='appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
+						className='appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
 						type='date'
 						name={type}
 						onChange={handleChange}
@@ -119,7 +119,7 @@ const handleSubmit = async (e) => {
 				<div className='w-[40%] my-3'>
 					<label>{name}</label>
 					<select
-						class='block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+						className='block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
 						name='sex'
 						onChange={handleChange}
 					>
@@ -138,7 +138,7 @@ const handleSubmit = async (e) => {
 			<div className='w-[40%] my-3'>
 				<label>{name}</label>
 				<input
-					class='appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
+					className='appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
 					type='text'
 					placeholder={name}
 					name={type}
@@ -164,7 +164,7 @@ const handleSubmit = async (e) => {
 					<div className='w-[40%] my-3'>
 						<label>Application</label>
 						<select
-							class='block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+							className='block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
 							placeholder='application'
 							onChange={(e) => setApplication(e.target.value)}
 						>
@@ -178,7 +178,7 @@ const handleSubmit = async (e) => {
 					<div className='w-[40%] my-3'>
 						<label>Type of Document</label>
 						<select
-							class='block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+							className='block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
 							placeholder='type of document'
 							onChange={(e) => setDocument(e.target.value)}
 						>
@@ -191,7 +191,7 @@ const handleSubmit = async (e) => {
 					<div className='w-[40%] my-3'>
 						<label>Document</label>
 						<input
-							class='appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
+							className='appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
 							id='grid-first-name'
 							type='file'
 							placeholder='Jane'
@@ -201,7 +201,7 @@ const handleSubmit = async (e) => {
 					<div className='w-[40%] my-3'>
 						<label>Verifier</label>
 						<select
-							class='block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+							className='block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
 							placeholder='type of document'
 							name="verifier"
 							onChange={(e)=>{
@@ -224,7 +224,7 @@ const handleSubmit = async (e) => {
 						<label>Add Fields</label>
 						<div className='flex w-full'>
 							<select
-								class='block appearance-none w-1/2 bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+								className='block appearance-none w-1/2 bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
 								placeholder='type of document'
 								onChange={(e) => {
 									setSelectedField(e.target.value)
@@ -295,7 +295,7 @@ const handleSubmit = async (e) => {
 								<path
 									fill='none'
 									stroke='currentColor'
-									stroke-width='2'
+									strokeWidth='2'
 									d='M6 12.4h12M12.6 7l5.4 5.4l-5.4 5.4'
 								/>
 							</svg>
