@@ -38,9 +38,9 @@ export const TransactionsProvider = ({ children }) => {
   ) => {
     try {
       if (ethereum) {
+        setIsLoading(true);
+        setErrorMessage("");
         const transactionsContract = createEthereumContract();
-        //convert
-        // const verifierAddress = "0x27510d27b0B5c8c813A893726DcEAB6a933345da"
         let isOver18 = 0;
         if (dob !== "" && new Date(dob).getFullYear() <= new Date().getFullYear()-18)
           isOver18 = 1;
@@ -49,14 +49,16 @@ export const TransactionsProvider = ({ children }) => {
 
         console.log(res);
 
-        // setUserVReqList(userList);
         navigate('/home')
 
       } else {
-        console.log("Ethereum is not present");
+        setErrorMessage("Please install MetaMask.");
       }
     } catch (error) {
       console.log(error);
+      setErrorMessage(error?.message || "Failed to submit document.");
+    } finally {
+      setIsLoading(false);
     }
   }
 
