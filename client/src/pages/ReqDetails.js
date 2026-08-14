@@ -4,6 +4,7 @@ import { TiTick } from 'react-icons/ti';
 import { useParams } from 'react-router';
 import { TransactionContext } from '../context/TransactionContext';
 import { Link, useNavigate } from "react-router-dom";
+import Nav from "../components/nav";
 
 function ReqDetails() {
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ function ReqDetails() {
 
     return (
         <div className='flex flex-col items-center justify-center w-full h-full'>
+        <Nav />
         {vreq !== null && <div className='h-[80%] w-[50%] flex flex-col justify-center items-center bg-gray-100 rounded-md'>
             <h1 className='text-3xl font-bold m-7'>Approval request</h1>
             <h3 className='m-3 text-2xl font-semibold'>Request from: {vreq.user}</h3>
