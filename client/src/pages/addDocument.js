@@ -19,6 +19,8 @@ const AddDocument = () => {
 	const [application, setApplication] = useState('Select')
 	const [document, setDocument] = useState('Select')
 	const [isHash, setIsHash] = useState(0)
+	const [isUploading, setIsUploading] = useState(false)
+	const [uploadError, setUploadError] = useState('')
 
 	const [fields, setFields] = useState([])
 	const [selectedField, setSelectedField] = useState()
@@ -56,18 +58,27 @@ const handleSubmit = async (e) => {
 	e.preventDefault()
 
 	if (!formData.verifier) {
-		return alert('Please select a verifier.')
+		return setUploadError('Please select a verifier.')
 	}
 
 	const form = e.target
 	const doc = form[2].files[0]
 
 	if (!doc) {
-		return alert('Please choose a file to upload.')
+		return setUploadError('Please choose a file to upload.')
 	}
 
-	const result = await ipfs.add(doc)
-	getHash(result.path, formData.verifier);
+	try {
+		setUploadError('')
+		setIsUploading(true)
+		const result = await ipfs.add(doc)
+		getHash(result.path, formData.verifier);
+	} catch (error) {
+		console.log(error)
+		setUploadError('Failed to upload document to IPFS. Please try again.')
+	} finally {
+		setIsUploading(false)
+	}
 }
 
 
@@ -285,12 +296,17 @@ const handleSubmit = async (e) => {
 						</div>
 					</div>
 
+					{uploadError && (
+						<p className='w-[40%] my-3 text-red-600'>{uploadError}</p>
+					)}
+
 					<div className='w-[40%] my-3 flex'>
 						<button
 							type='submit'
-							className='w-full h-[44px] bg-blue-300 flex justify-center items-center rounded font-semibold'
+							disabled={isUploading}
+							className='w-full h-[44px] bg-blue-300 flex justify-center items-center rounded font-semibold disabled:opacity-60 disabled:cursor-not-allowed'
 						>
-							Add Document
+							{isUploading ? 'Uploading...' : 'Add Document'}
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								width='25'
