@@ -34,6 +34,7 @@ export default function Access() {
 
 	const accept = async e => {
 		e.preventDefault();
+		if (!query.callback) return;
 
 		await giveAccess(
 			query.org,
@@ -56,6 +57,7 @@ export default function Access() {
 
 	const reject = e => {
 		e.preventDefault();
+		if (!query.callback) return;
 
 		const url = new URL(query.callback);
 		url.searchParams.set("status", "401");
