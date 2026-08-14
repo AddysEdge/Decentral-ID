@@ -8,8 +8,8 @@ export default function Access() {
 	const [orgName, setOrgName] = useState('');
 	const { checkIfWalletIsConnect, giveAccess, currentAccount, getVerifierName } = useContext(TransactionContext);
 
-	const [searchParams, setSearchParams] = useSearchParams();
-	const [query, setQuery] = useState({
+	const [searchParams] = useSearchParams();
+	const [query] = useState({
 		org: searchParams.get("org"),
 		callback: searchParams.get("callback"),
 		name: searchParams.get("name")==='1',
