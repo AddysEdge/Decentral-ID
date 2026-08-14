@@ -3,7 +3,7 @@ import { RxCrossCircled } from 'react-icons/rx';
 import { TiTick } from 'react-icons/ti';
 import { useParams } from 'react-router';
 import { TransactionContext } from '../context/TransactionContext';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Nav from "../components/nav";
 
 function ReqDetails() {
@@ -44,7 +44,7 @@ function ReqDetails() {
                 {vreq.isOver18 !== 0 && <h3>Is Over 18?: {vreq.isOver18}</h3>}
                 {vreq.mobile !== 0 && <h3>Mobile: {vreq.mobile}</h3>}
                 {vreq.sex !== "" && <h3>Sex: {vreq.sex}</h3>}
-                <Link to={`https://ecmaniacs-hack36.infura-ipfs.io/ipfs/${vreq.cid}`} target="_blank">View File</Link>
+                <a href={`https://ecmaniacs-hack36.infura-ipfs.io/ipfs/${vreq.cid}`} target="_blank" rel="noreferrer" className="text-blue-600 underline">View File</a>
             </div>
 
             <div className='flex space-x-5'>
