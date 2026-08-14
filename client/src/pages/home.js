@@ -31,40 +31,44 @@ const Home = () => {
 			<div className='flex flex-col items-center w-full h-full'>
 				<h1 className='text-3xl font-bold m-7'>My Request Status</h1>
 
-				<table className='w-2/4 rounded-lg border-2 border-gray'>
-					<thead className='bg-blue-300'>
-						<tr>
-							<th scope='col' className='text-sm font-medium px-6 py-4 text-left'>
-								Id
-							</th>
-							<th scope='col' className='text-sm font-medium px-6 py-4 text-left'>
-								Verifier
-							</th>
-							<th scope='col' className='text-sm font-medium px-6 py-4 text-left'>
-								Status
-							</th>
-						</tr>
-					</thead>
+				{userVReqList.length === 0 ? (
+					<p className='text-gray-500'>You haven't submitted any verification requests yet.</p>
+				) : (
+					<table className='w-2/4 rounded-lg border-2 border-gray'>
+						<thead className='bg-blue-300'>
+							<tr>
+								<th scope='col' className='text-sm font-medium px-6 py-4 text-left'>
+									Id
+								</th>
+								<th scope='col' className='text-sm font-medium px-6 py-4 text-left'>
+									Verifier
+								</th>
+								<th scope='col' className='text-sm font-medium px-6 py-4 text-left'>
+									Status
+								</th>
+							</tr>
+						</thead>
 
-					<tbody>
-						{userVReqList.map(({ verifier, status }, index) => {
-							const { text, className } = statusLabel(status)
-							return (
-								<tr className='bg-gray-100 border-b' key={index}>
-									<td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
-										{index}
-									</td>
-									<td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-										{verifier}
-									</td>
-									<td className={`text-sm font-medium px-6 py-4 whitespace-nowrap ${className}`}>
-										{text}
-									</td>
-								</tr>
-							)
-						})}
-					</tbody>
-				</table>
+						<tbody>
+							{userVReqList.map(({ verifier, status }, index) => {
+								const { text, className } = statusLabel(status)
+								return (
+									<tr className='bg-gray-100 border-b' key={index}>
+										<td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
+											{index}
+										</td>
+										<td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
+											{verifier}
+										</td>
+										<td className={`text-sm font-medium px-6 py-4 whitespace-nowrap ${className}`}>
+											{text}
+										</td>
+									</tr>
+								)
+							})}
+						</tbody>
+					</table>
+				)}
 			</div>
 		</div>
 	)
