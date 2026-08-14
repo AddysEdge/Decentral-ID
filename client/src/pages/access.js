@@ -6,7 +6,7 @@ import { TransactionContext } from "../context/TransactionContext";
 
 export default function Access() {
 	const [orgName, setOrgName] = useState('');
-	const { checkIfWalletIsConnect, giveAccess, currentAccount, getVerifierName } = useContext(TransactionContext);
+	const { checkIfWalletIsConnect, giveAccess, currentAccount, getVerifierName, isLoading, errorMessage } = useContext(TransactionContext);
 
 	const [searchParams] = useSearchParams();
 	const [query] = useState({
@@ -83,14 +83,23 @@ export default function Access() {
 				</div>
 
 				<div className='flex space-x-5'>
-					<button className='flex items-center p-2 bg-red-300 rounded' onClick={reject}>
+					<button
+						className='flex items-center p-2 bg-red-300 rounded hover:bg-red-400 transition-colors disabled:opacity-60'
+						onClick={reject}
+						disabled={isLoading}
+					>
 						<RxCrossCircled className='mr-2' />
 						Reject
 					</button>
-					<button className='flex items-center p-2 rounded bg-lime-300' onClick={accept}>
-						<TiTick className='mr-2' /> Approve
+					<button
+						className='flex items-center p-2 rounded bg-lime-300 hover:bg-lime-400 transition-colors disabled:opacity-60'
+						onClick={accept}
+						disabled={isLoading}
+					>
+						<TiTick className='mr-2' /> {isLoading ? "Approving..." : "Approve"}
 					</button>
 				</div>
+				{errorMessage && <p className='mt-4 text-red-600 text-center'>{errorMessage}</p>}
 			</div>
 		</div>
 	)
