@@ -25,6 +25,8 @@ export default function Access() {
 	useEffect(() => {
 		checkIfWalletIsConnect();
 
+		if (!query.org) return;
+
 		getVerifierName(query.org.toLowerCase()).then((name) => {
 			setOrgName(name);
 		}).catch(err => console.log(err));
