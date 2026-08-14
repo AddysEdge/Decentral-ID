@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { useLocation } from "react-router"
+import { Link, useLocation } from "react-router-dom"
 import { TransactionContext } from "../context/TransactionContext"
 
 export default function Nav() {
@@ -11,18 +11,18 @@ export default function Nav() {
 				<h1 className='text-3xl font-bold'>DecentralID</h1>
 				{pathname != '/admin' && (
 				<div className='flex space-x-5'>
-					<a
-						href='/home/addDocument'
+					<Link
+						to='/home/addDocument'
 						className='p-3 bg-blue-300 rounded-md hover:bg-blue-500'
 					>
 						Add Verification Request
-					</a>
-					<a
-						href='/home'
+					</Link>
+					<Link
+						to='/home'
 						className='p-3 bg-blue-300 rounded-md hover:bg-blue-500'
 					>
 						My Requests Status
-					</a>
+					</Link>
 				</div>)
 				}
 			</div>
