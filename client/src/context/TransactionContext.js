@@ -309,7 +309,9 @@ export const TransactionsProvider = ({ children }) => {
         isAdmin,
         verify,
         getVerifierAddress,
-        getVerifierName
+        getVerifierName,
+        errorMessage,
+        setErrorMessage
       }}
     >
       {children}
