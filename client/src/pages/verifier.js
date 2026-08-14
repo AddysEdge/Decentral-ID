@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { TransactionContext } from "../context/TransactionContext";
-import { Navigate, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import Nav from "../components/nav";
 
 const Verifier = () => {
