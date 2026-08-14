@@ -55,12 +55,17 @@ const getHash = (cid, name) => {
 const handleSubmit = async (e) => {
 	e.preventDefault()
 
-	const form = e.target
-
-	if (!form || form.length === 0) {
-		return alert('No files selected')
+	if (!formData.verifier) {
+		return alert('Please select a verifier.')
 	}
+
+	const form = e.target
 	const doc = form[2].files[0]
+
+	if (!doc) {
+		return alert('Please choose a file to upload.')
+	}
+
 	const result = await ipfs.add(doc)
 	getHash(result.path, formData.verifier);
 }
