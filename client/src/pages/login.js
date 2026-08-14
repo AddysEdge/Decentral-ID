@@ -10,7 +10,7 @@ function Wallet(props) {
 
 
 const Login = () => {
-  const { connectWallet, currentAccount, getVerifierName } = useContext(TransactionContext);
+  const { connectWallet, currentAccount, getVerifierName, isLoading } = useContext(TransactionContext);
   const navigate = useNavigate();
   useEffect(() => {
     if (currentAccount !== "") {
@@ -27,7 +27,13 @@ const Login = () => {
     <div className="flex flex-col items-center justify-center w-full h-full">
       <h1 className="mb-3 text-5xl font-extrabold">{"DecentralID"}</h1>
       <h3 className="text-2xl italic mb-7">{"Identity theft is not a joke, JIM!"}</h3>
-      <button onClick={connectWallet} className="flex items-center justify-center p-3 bg-blue-300 rounded-md"> Connect Wallet <Wallet /></button>
+      <button
+        onClick={connectWallet}
+        disabled={isLoading}
+        className="flex items-center justify-center p-3 bg-blue-300 rounded-md disabled:opacity-60 disabled:cursor-not-allowed hover:bg-blue-400 transition-colors"
+      >
+        {isLoading ? "Connecting..." : "Connect Wallet"} <Wallet />
+      </button>
     </div>
 	)
 };
