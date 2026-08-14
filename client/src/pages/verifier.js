@@ -49,10 +49,10 @@ const Verifier = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{verifierVReqList.map(({user, status}, index) => (
+						{verifierVReqList.map(({ user, status }, index) => (
 							<tr className='bg-gray-100 border-b' key={index}>
 								<td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
-									{index+1}
+									{index + 1}
 								</td>
 								<td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
 									{user}
@@ -63,15 +63,15 @@ const Verifier = () => {
 									{status === -1 && "REJECTED"}
 								</td>
 								<td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-								{status === 0 && <a
-									onClick = {() => {
-									navigate(`/admin/${index+1}`)
-								}}
-								className='p-3 bg-blue-300 rounded-md hover:bg-blue-500'
-								>
-									View
-								</a>}
-							    </td>
+									{status === 0 && (
+										<button
+											onClick={() => navigate(`/admin/${index + 1}`)}
+											className='p-3 bg-blue-300 rounded-md hover:bg-blue-500'
+										>
+											View
+										</button>
+									)}
+								</td>
 							</tr>
 						))}
 					</tbody>
