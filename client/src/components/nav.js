@@ -15,9 +15,14 @@ export default function Nav() {
 				: 'bg-blue-300 hover:bg-blue-500'
 		}`
 
+	const shortAddress = currentAccount
+		? `${currentAccount.slice(0, 6)}...${currentAccount.slice(-4)}`
+		: ''
+
 	return (
 			<div className='flex justify-between w-full p-10'>
-				<h1 className='text-3xl font-bold'>DecentralID</h1>
+				<Link to='/home' className='text-3xl font-bold'>DecentralID</Link>
+				<div className='flex items-center space-x-5'>
 				{!isAdminSection && (
 				<div className='flex space-x-5'>
 					<Link to='/home/addDocument' className={linkClass('/home/addDocument')}>
@@ -28,6 +33,12 @@ export default function Nav() {
 					</Link>
 				</div>)
 				}
+				{shortAddress && (
+					<span className='px-3 py-2 text-sm font-medium bg-gray-100 rounded-md'>
+						{shortAddress}
+					</span>
+				)}
+				</div>
 			</div>
 	)
 }
