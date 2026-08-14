@@ -3,6 +3,12 @@ import { TransactionContext } from '../context/TransactionContext'
 import { useNavigate } from 'react-router-dom'
 import Nav from '../components/nav'
 
+const statusLabel = (status) => {
+	if (status === 0) return { text: 'PROCESSING', className: 'text-yellow-600' }
+	if (status === 1) return { text: 'ACCEPTED', className: 'text-green-600' }
+	return { text: 'REJECTED', className: 'text-red-600' }
+}
+
 const Home = () => {
 	const { currentAccount, loadUserList, userVReqList, isAdmin } = useContext(TransactionContext)
 	const navigate = useNavigate()
@@ -41,21 +47,22 @@ const Home = () => {
 					</thead>
 
 					<tbody>
-						{userVReqList.map(({ verifier, status }, index) => (
-							<tr className='bg-gray-100 border-b' key={index}>
-								<td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
-									{index}
-								</td>
-								<td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-									{verifier}
-								</td>
-								<td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-									{status === 0 && "PROCESSING"}
-									{status === 1 && "ACCEPTED"}
-									{status === -1 && "REJECTED"}
-								</td>
-							</tr>
-						))}
+						{userVReqList.map(({ verifier, status }, index) => {
+							const { text, className } = statusLabel(status)
+							return (
+								<tr className='bg-gray-100 border-b' key={index}>
+									<td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
+										{index}
+									</td>
+									<td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
+										{verifier}
+									</td>
+									<td className={`text-sm font-medium px-6 py-4 whitespace-nowrap ${className}`}>
+										{text}
+									</td>
+								</tr>
+							)
+						})}
 					</tbody>
 				</table>
 			</div>
