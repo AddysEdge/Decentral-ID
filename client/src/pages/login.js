@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { TransactionContext } from "../context/TransactionContext";
-import { Navigate, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 function Wallet(props) {
   return (
@@ -11,7 +11,6 @@ function Wallet(props) {
 
 const Login = () => {
   const { connectWallet, currentAccount, getVerifierName } = useContext(TransactionContext);
-//   const [redirectState, setRedirectState] = useState(0);
   const navigate = useNavigate();
   useEffect(() => {
     if (currentAccount != "") {
