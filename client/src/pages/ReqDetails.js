@@ -22,7 +22,6 @@ function ReqDetails() {
 	}, []);
 
     useEffect(() =>{
-        console.log("fewfew", verifierVReqList)
         if (index < verifierVReqList.length)
             setVreq(verifierVReqList[index]);
 	}, [verifierVReqList]);
