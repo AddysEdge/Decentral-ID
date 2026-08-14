@@ -229,15 +229,6 @@ export const TransactionsProvider = ({ children }) => {
     }
   }
 
-  useEffect(() => {
-    window.ethereum.on('accountsChanged', accounts => {
-      if (accounts.length)
-        setCurrentAccount(accounts[0]);
-      else
-        setCurrentAccount("");
-    });
-  }, []);
-
   const handleChange = (e, name) => {
     setFormData((prevState) => ({ ...prevState, [name]: e.target.value }));
   };
@@ -266,19 +257,26 @@ export const TransactionsProvider = ({ children }) => {
     try {
       if (!ethereum) return alert("Please install MetaMask.");
 
+      setIsLoading(true);
+      setErrorMessage("");
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
-      // console.log(accounts);
       setCurrentAccount(accounts[0]);
     } catch (error) {
       console.log(error);
-
-      throw new Error("No ethereum object");
+      setErrorMessage(error?.message || "Failed to connect wallet.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    window.ethereum.on('accountsChanged', accounts => setCurrentAccount(accounts[0]));
+    if (!ethereum) return;
+    const handleAccountsChanged = (accounts) => {
+      setCurrentAccount(accounts.length ? accounts[0] : "");
+    };
+    ethereum.on('accountsChanged', handleAccountsChanged);
+    return () => ethereum.removeListener('accountsChanged', handleAccountsChanged);
   }, []);
 
   useEffect(() => {
