@@ -10,7 +10,7 @@ function Wallet(props) {
 
 
 const Login = () => {
-  const { connectWallet, currentAccount, getVerifierName, isLoading } = useContext(TransactionContext);
+  const { connectWallet, currentAccount, getVerifierName, isLoading, errorMessage } = useContext(TransactionContext);
   const navigate = useNavigate();
   useEffect(() => {
     if (currentAccount !== "") {
@@ -34,6 +34,7 @@ const Login = () => {
       >
         {isLoading ? "Connecting..." : "Connect Wallet"} <Wallet />
       </button>
+      {errorMessage && <p className="mt-4 text-red-600">{errorMessage}</p>}
     </div>
 	)
 };
