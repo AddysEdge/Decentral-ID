@@ -7,24 +7,20 @@ const Home = () => {
 	const { currentAccount, loadUserList, userVReqList, isAdmin } = useContext(TransactionContext)
 	const navigate = useNavigate()
 
-  useEffect(() => {
-      loadUserList();
-  },[])
+	useEffect(() => {
+		loadUserList();
+	}, [])
 
-    useEffect(() => {
-      console.log("SS")
-        if (currentAccount != undefined && isAdmin != undefined) {
-        console.log(currentAccount,isAdmin)
-        if(isAdmin)
-              navigate('/admin')
-            else
-              navigate('/home')
-          };
-      }, [currentAccount]);
+	useEffect(() => {
+		if (currentAccount !== undefined && currentAccount !== "" && isAdmin !== undefined) {
+			if (isAdmin)
+				navigate('/admin')
+		}
+	}, [currentAccount, isAdmin]);
 
 	return (
 		<div className='w-full h-full overflow-x-hidden'>
-      <Nav />
+			<Nav />
 
 			<div className='flex flex-col items-center w-full h-full'>
 				<h1 className='text-3xl font-bold m-7'>My Request Status</h1>
@@ -45,26 +41,25 @@ const Home = () => {
 					</thead>
 
 					<tbody>
-              {userVReqList.map(({ verifier, status }, index) => (
-                <tr className='bg-gray-100 border-b' key={index}>
-                  <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
-                    {index}
-                  </td>
-                  <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-                    {verifier}
-                  </td>
-                  <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-                    {status == 0 && "PROCESSING"}
-                    {status == 1 && "ACCEPTED"}
-                    {status == -1 && "REJECTED"}
-                  </td>
-
-                </tr>
-              ))}
+						{userVReqList.map(({ verifier, status }, index) => (
+							<tr className='bg-gray-100 border-b' key={index}>
+								<td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
+									{index}
+								</td>
+								<td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
+									{verifier}
+								</td>
+								<td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
+									{status === 0 && "PROCESSING"}
+									{status === 1 && "ACCEPTED"}
+									{status === -1 && "REJECTED"}
+								</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>
-    </div>
+		</div>
 	)
 }
 
