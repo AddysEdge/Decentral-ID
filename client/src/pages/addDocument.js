@@ -99,10 +99,10 @@ const handleSubmit = async (e) => {
 		})
 	}
 
-	function Field(name, type) {
+	function Field(name, type, key) {
 		if (type === 'dob') {
 			return (
-				<div className='w-[40%] my-3'>
+				<div className='w-[40%] my-3' key={key}>
 					<label>{name}</label>
 					<input
 						className='appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
@@ -116,7 +116,7 @@ const handleSubmit = async (e) => {
 
 		if (type === 'sex') {
 			return (
-				<div className='w-[40%] my-3'>
+				<div className='w-[40%] my-3' key={key}>
 					<label>{name}</label>
 					<select
 						className='block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
@@ -135,7 +135,7 @@ const handleSubmit = async (e) => {
 		}
 
 		return (
-			<div className='w-[40%] my-3'>
+			<div className='w-[40%] my-3' key={key}>
 				<label>{name}</label>
 				<input
 					className='appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
@@ -184,7 +184,7 @@ const handleSubmit = async (e) => {
 						>
 							<option>Select</option>
 							{documentMap[application].map((val) => (
-								<option>{val}</option>
+								<option key={val}>{val}</option>
 							))}
 						</select>
 					</div>
@@ -212,7 +212,7 @@ const handleSubmit = async (e) => {
 						>
 							<option>Select</option>
 							{verifierMap[document].map((val) => (
-								<option value={val}>{val}</option>
+								<option value={val} key={val}>{val}</option>
 							))}
 						</select>
 					</div>
@@ -241,36 +241,36 @@ const handleSubmit = async (e) => {
 							<button
 								onClick={(e) => {
 									e.preventDefault()
-									console.log(selectedField)
+									const fieldKey = `${selectedField}-${fields.length}`
 									if (selectedField === 'Name')
 										setFields([
 											...fields,
-											Field(selectedField, 'name', handleChange),
+											Field(selectedField, 'name', fieldKey),
 										])
 									else if (selectedField === 'Date of Birth')
 										setFields([
 											...fields,
-											Field(selectedField, 'dob', handleChange),
+											Field(selectedField, 'dob', fieldKey),
 										])
 									else if (selectedField === 'Gender')
 										setFields([
 											...fields,
-											Field(selectedField, 'sex', handleChange),
+											Field(selectedField, 'sex', fieldKey),
 										])
 									else if (selectedField === 'Mobile')
 										setFields([
 											...fields,
-											Field(selectedField, 'mobile', handleChange),
+											Field(selectedField, 'mobile', fieldKey),
 										])
 									else if (selectedField === 'Email')
 										setFields([
 											...fields,
-											Field(selectedField, 'email', handleChange),
+											Field(selectedField, 'email', fieldKey),
 										])
 									else if (selectedField === 'College Name')
 										setFields([
 											...fields,
-											Field(selectedField, 'college', handleChange),
+											Field(selectedField, 'college', fieldKey),
 										])
 								}}
 								className='h-[44px] ml-6 w-1/2 flex justify-center items-center bg-blue-300 rounded'
