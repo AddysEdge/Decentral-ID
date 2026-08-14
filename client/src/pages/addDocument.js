@@ -35,7 +35,7 @@ const AddDocument = () => {
 	})
 
 	useEffect(() => {
-		if (isHash == 1) {
+		if (isHash === 1) {
 			const { name, dob, mobile, sex, college, email, verifier, cid } = formData
 			submitDocument(verifier,cid,name,sex,dob,parseInt(mobile),email,college);
 		}
