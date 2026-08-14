@@ -3,6 +3,6 @@ import abi from './SmartContract.json';
 export const contractABI = abi.abi;
 export const contractAddress = '0x440A56F75A150bAdD27565792FCfDb23b3Dd73CA';
 
-//IPFS
-export const projectId = '2NTEjHeG4NfpOuXQtsMzDCN7aVy'
-export const projectSecretKey = '9ac5a480614ba7885aabc99c9c3d45f4'
+//IPFS - set these in client/.env (see .env.example), never commit real values
+export const projectId = process.env.REACT_APP_IPFS_PROJECT_ID || '';
+export const projectSecretKey = process.env.REACT_APP_IPFS_PROJECT_SECRET || '';
