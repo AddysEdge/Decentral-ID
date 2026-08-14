@@ -8,14 +8,6 @@ export default function Access() {
 	const [orgName, setOrgName] = useState('');
 	const { checkIfWalletIsConnect, giveAccess, currentAccount, getVerifierName } = useContext(TransactionContext);
 
-	useEffect(() => {
-		checkIfWalletIsConnect();
-
-		getVerifierName(query.org.toLowerCase()).then((name) => {
-			setOrgName(name);
-		}).catch(err => console.log(err));
-	}, []);
-
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [query, setQuery] = useState({
 		org: searchParams.get("org"),
@@ -29,6 +21,14 @@ export default function Access() {
         isOver18: searchParams.get("isOver18")==='1',
         isCollegeStudent: searchParams.get("isCollegeStudent")==='1'
 	})
+
+	useEffect(() => {
+		checkIfWalletIsConnect();
+
+		getVerifierName(query.org.toLowerCase()).then((name) => {
+			setOrgName(name);
+		}).catch(err => console.log(err));
+	}, []);
 
 	const accept = async e => {
 		e.preventDefault();
