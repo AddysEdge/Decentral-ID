@@ -55,7 +55,7 @@ const Verifier = () => {
 					</thead>
 					<tbody>
 						{verifierVReqList.map(({user, status}, index) => (
-							<tr class='bg-gray-100 border-b'>
+							<tr class='bg-gray-100 border-b' key={index}>
 								<td class='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
 									{index+1}
 								</td>
