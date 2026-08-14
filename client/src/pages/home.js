@@ -11,17 +11,6 @@ const Home = () => {
       loadUserList();
   },[])
 
-
-  // useEffect(() => {
-  //   if (isAdmin !== undefined) {
-  //       console.log("change")
-  //       // console.log(currentAccount)
-  //       console.log(isAdmin)
-  //       if(isA)
-  //           navigate('/admin')
-  //     };
-  //   }, [isAdmin]);
-
     useEffect(() => {
       console.log("SS")
         if (currentAccount != undefined && isAdmin != undefined) {
@@ -32,8 +21,6 @@ const Home = () => {
               navigate('/home')
           };
       }, [currentAccount]);
-
-
 
 	return (
 		<div className='w-full h-full overflow-x-hidden'>
