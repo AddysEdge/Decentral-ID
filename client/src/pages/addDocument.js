@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { create  } from "ipfs-http-client";
 import { TransactionContext } from "../context/TransactionContext";
-import Web3 from 'web3';
-import { ethers } from "ethers";
 import Nav from "../components/nav";
 import { projectId,projectSecretKey } from "../utils/constants";
 
