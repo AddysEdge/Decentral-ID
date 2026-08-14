@@ -12,7 +12,7 @@ function ReqDetails() {
     let {index} = useParams();
     index--;
     const [vreq, setVreq] = useState(null);
-    const { verifierVReqList, loadVerifierList, verify, currentAccount, checkIfWalletIsConnect } = useContext(TransactionContext);
+    const { verifierVReqList, loadVerifierList, verify, currentAccount, checkIfWalletIsConnect, isLoading, errorMessage } = useContext(TransactionContext);
 
     useEffect(() =>{
         checkIfWalletIsConnect();
@@ -48,20 +48,27 @@ function ReqDetails() {
             </div>
 
             <div className='flex space-x-5'>
-                <button className='flex items-center p-2 bg-red-300 rounded' onClick={async () => {
-                    await verify(currentAccount, index, false);
-                    navigate('/admin');
-                }}>
+                <button
+                    className='flex items-center p-2 bg-red-300 rounded hover:bg-red-400 transition-colors disabled:opacity-60'
+                    disabled={isLoading}
+                    onClick={async () => {
+                        await verify(currentAccount, index, false);
+                        navigate('/admin');
+                    }}>
                     <RxCrossCircled className='mr-2' />
                     Reject
                 </button>
-                <button className='flex items-center p-2 rounded bg-lime-300' onClick={async () => {
-                    await verify(currentAccount, index, true);
-                    navigate('/admin');
-                }}>
+                <button
+                    className='flex items-center p-2 rounded bg-lime-300 hover:bg-lime-400 transition-colors disabled:opacity-60'
+                    disabled={isLoading}
+                    onClick={async () => {
+                        await verify(currentAccount, index, true);
+                        navigate('/admin');
+                    }}>
                     <TiTick className='mr-2' /> Approve
                 </button>
             </div>
+            {errorMessage && <p className='mt-4 text-red-600'>{errorMessage}</p>}
         </div>}
         </div>
     );
