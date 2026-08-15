@@ -7,7 +7,7 @@
 
 This project was developed by us, **Team ECMAniacs**, as a submission for [Hack36 6.0](https://www.hack36.com/)
 
-*UPDATE* - We went on to win 1st position in this hackathon, our [Devfolio Project Link](https://devfolio.co/projects/decentralid-a6db) 
+ [Devfolio Project Link](https://devfolio.co/projects/decentralid-a6db) 
 
 
 ## Resources
