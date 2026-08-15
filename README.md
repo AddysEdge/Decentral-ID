@@ -1,9 +1,5 @@
 # DecentralID
 <a href="https://hack36.com"> <img src="https://cutt.ly/BuiltAtHack36" height=24px> </a>
-![Version](https://img.shields.io/badge/version-1.69-brightgreen.svg)
-![Optimization](https://img.shields.io/badge/optimised-0%25-critical.svg)
-![Built with Love](https://img.shields.io/badge/built%20with-love-important.svg)
-![Designing](https://img.shields.io/badge/designed%20in-ms%20paint-blueviolet.svg)
 
 This project was developed by us, **Team ECMAniacs**, as a submission for [Hack36 6.0](https://www.hack36.com/)
 
