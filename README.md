@@ -1,7 +1,4 @@
 # DecentralID
-<a href="https://hack36.com"> <img src="https://cutt.ly/BuiltAtHack36" height=24px> </a>
-
-This project was developed by us, **Team ECMAniacs**, as a submission for [Hack36 6.0](https://www.hack36.com/)
 
  [Devfolio Project Link](https://devfolio.co/projects/decentralid-a6db) 
 
